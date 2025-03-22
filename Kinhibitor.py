@@ -523,14 +523,14 @@ class Protein_mol_model(torch.nn.Module):
                 attention = True, normalize = False,
                 static_coord = True)
         
-        self.graphencoder.load_state_dict(torch.load('/home/xudongguo/Projects/Guo/inhibitor_identification/model_save/molgraph_model_epoch_best.pth',
+        self.graphencoder.load_state_dict(torch.load('../models/molgraph_model_epoch_best.pth',
                                                      map_location=torch.device(device)))
         for parameter in self.graphencoder.parameters():
             parameter.requires_grad = False
         
         self.cross_infor=projection_layer()
         
-        model_dir = "/home/xudongguo/Projects/Guo/ESM_PST_model"   # Set the path to your model dir
+        model_dir = "../models"   # Set the path to your model dir
         self.esm = models.EvolutionaryScaleModeling(model_dir, model="ESM-2-650M", readout="mean")
         # Load ESM-2-650M-S
         self.esm.load_state_dict(torch.load(os.path.join(model_dir, "esm_650m_s.pth"), map_location=torch.device(device)))
@@ -588,14 +588,14 @@ def main():
     parser = argparse.ArgumentParser(description="Kinhibit:inhibitor-kinase binding affinity prediction.")
     parser.add_argument('--kinase', type=str, required=True, help="kinase")
     parser.add_argument('--test_smiles', type=str, required=True, help="Path to the input file.")
-    parser.add_argument('--outputpath', type=str, required=True, help="Path to the output file.",default='/home/xudongguo/Projects/Guo/inhibitor_identification/model_save/')
+    parser.add_argument('--outputpath', type=str, required=True, help="Path to the output file.",default='../Results/')
     # Parse the arguments
     args = parser.parse_args()
     transform_=transform.Compose(
         transforms=[transform.ProteinView(view='residue')])
     # get input data
     pre_data_df=read_input(args)   
-    pre_data=Pro_Mol_Dataset(pre_data_df ,'/home/xudongguo/Projects/Guo/inhibitor_identification/data',
+    pre_data=Pro_Mol_Dataset(pre_data_df ,'../data',
                             transform=transform_)
     collate_fn = pre_data.custom_collate
     pre_loader = torchdrug.data.DataLoader(pre_data, batch_size=1,
@@ -606,11 +606,11 @@ def main():
 
     model=Protein_mol_model(hidden_channels=133,num_edge_feats=13).to(device)
     if args.kinase in ['RAF1','BRAF']:
-        model.load_state_dict(torch.load('/home/xudongguo/Projects/Guo/inhibitor_identification/model_save/protein_mol_model/protein_mol_RAF_V3_model_weight_B.pth',map_location=torch.device(device)))
+        model.load_state_dict(torch.load('../models/protein_mol_RAF_V3_model_weight_B.pth',map_location=torch.device(device)))
     elif args.kinase in ['MAP2K2','MAP2K1']:
-        model.load_state_dict(torch.load('/home/xudongguo/Projects/Guo/inhibitor_identification/model_save/protein_mol_model/protein_mol_MEK_V3_model_weight_B.pth',map_location=torch.device(device)))
+        model.load_state_dict(torch.load('../models/protein_mol_MEK_V3_model_weight_B.pth',map_location=torch.device(device)))
     else:
-        model.load_state_dict(torch.load('/home/xudongguo/Projects/Guo/inhibitor_identification/model_save/protein_mol_model/protein_mol_ERK_V3_model_weight_B.pth',map_location=torch.device(device)))
+        model.load_state_dict(torch.load('../models/protein_mol_ERK_V3_model_weight_B.pth',map_location=torch.device(device)))
     
     
     model.eval()
@@ -645,11 +645,11 @@ def main():
     affinity_pre_data['Uniprot']=ProNs
     if args.kinase in ['']:
         # 加载模型
-        loaded_model = load_model('/home/xudongguo/Projects/Guo/inhibitor_identification/Regressor_results/MEK_model_pipeline_3')
+        loaded_model = load_model('../models/MEK_model_pipeline_3')
     elif args.kinase in []:
-        loaded_model = load_model('/home/xudongguo/Projects/Guo/inhibitor_identification/Regressor_results/RAF_model_pipeline_3')
+        loaded_model = load_model('../models/RAF_model_pipeline_3')
     else:
-        loaded_model = load_model('/home/xudongguo/Projects/Guo/inhibitor_identification/Regressor_results/ERK_model_pipeline_3')
+        loaded_model = load_model('../models/ERK_model_pipeline_3')
 
     # 使用加载的模型进行预测
     predictions = predict_model(loaded_model, data=affinity_pre_data)
