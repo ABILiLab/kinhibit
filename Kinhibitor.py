@@ -647,9 +647,9 @@ def main():
         # 加载模型
         loaded_model = load_model('../models/MEK_model_pipeline_3')
     elif args.kinase in []:
-        loaded_model = load_model('../models/RAF_model_pipeline_3')
+        loaded_model = load_model('../models/RAF_model_pipeline_0')
     else:
-        loaded_model = load_model('../models/ERK_model_pipeline_3')
+        loaded_model = load_model('../models/ERK_model_pipeline_0')
 
     # 使用加载的模型进行预测
     predictions = predict_model(loaded_model, data=affinity_pre_data)
