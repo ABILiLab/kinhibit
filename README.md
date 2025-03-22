@@ -33,7 +33,7 @@ for drug screening and biological sciences.
 ## Model Weights
 We extracted features for kinases based on the structure-informed ESM ([ESM-S](https://github.com/DeepGraphLearning/esm-s)). Model weights for ESM-S can be found [here](https://huggingface.co/Oxer11/ESM-S).
 The model weights for Kinhibitor can be found here ().
-The model weights for ESM-2 can be found [here](https://github.com/facebookresearch/esm).
+The model weights for ESM-2-650M can be found [here](https://github.com/facebookresearch/esm).
 ## Usage
 ### Prediction(example):
 ```python Kinhibitor.py --kinase RAF1 --test_smiles test.txt --outputpath ./Results/```
