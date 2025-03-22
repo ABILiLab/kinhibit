@@ -525,8 +525,8 @@ class Protein_mol_model(torch.nn.Module):
         
         #self.graphencoder.load_state_dict(torch.load('../models/molgraph_model_epoch_best.pth',
         #                                            map_location=torch.device(device)))
-        for parameter in self.graphencoder.parameters():
-            parameter.requires_grad = False
+        # for parameter in self.graphencoder.parameters():
+        #     parameter.requires_grad = False
         
         self.cross_infor=projection_layer()
         
