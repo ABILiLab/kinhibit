@@ -523,8 +523,8 @@ class Protein_mol_model(torch.nn.Module):
                 attention = True, normalize = False,
                 static_coord = True)
         
-        self.graphencoder.load_state_dict(torch.load('../models/molgraph_model_epoch_best.pth',
-                                                     map_location=torch.device(device)))
+        #self.graphencoder.load_state_dict(torch.load('../models/molgraph_model_epoch_best.pth',
+        #                                            map_location=torch.device(device)))
         for parameter in self.graphencoder.parameters():
             parameter.requires_grad = False
         
