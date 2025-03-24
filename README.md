@@ -1,19 +1,7 @@
 # Kinase-Inhibitor Binding Affinity Prediction with Pretrained Graph Encoder and Language Model
 
 ## Introduction
-The accurate prediction of inhibitor-kinase binding affinity is crucial in drug discovery and medical applications, especially
-in the treatment of diseases such as cancer. Existing methods for predicting inhibitor-kinase affinity still face challenges
-including insufficient data expression, limited feature extraction, and low performance. Despite the progress made through
-artificial intelligence (AI) methods, especially deep learning technology, many current methods fail to capture the intricate
-interactions between kinases and inhibitors. Therefore, it is necessary to develop more advanced methods to solve the
-existing problems in inhibitor-kinase binding prediction. This study proposed Kinhibit, a novel framework for inhibitor-
-kinase binding affinity predictor. Kinhibit integrates self-supervised pre-trained molecular encoders and protein language
-models (ESM-S) to extract features effectively. Kinhibit also employed a feature fusion approach to optimize the fusion
-of inhibitor and kinase features. Experimental results demonstrate the superiority of this method, achieving an accuracy
-of 92.6% in inhibitor prediction tasks of three MAPK signaling pathway kinases: Raf protein kinase (RAF), Mitogen-
-activated protein kinase kinase (MEK), and Extracellular Signal-Regulated Kinase (ERK). Furthermore, the framework
-achieves an impressive accuracy of 93.4% on the MAPK-All dataset. This study provides promising and effective tools
-for drug screening and biological sciences.
+The accurate prediction of inhibitor-kinase binding affinity is crucial in drug discovery and medical applications, especially in the treatment of diseases such as cancer. Existing methods for predicting inhibitor-kinase affinity still face challenges including insufficient data expression, limited feature extraction, and low performance. Despite the progress made through artificial intelligence (AI) methods, especially deep learning technology, many current methods fail to capture the intricate interactions between kinases and inhibitors. Therefore, it is necessary to develop more advanced methods to solve the existing problems in inhibitor-kinase binding prediction. This study proposed Kinhibit, a novel framework for inhibitor-kinase binding affinity predictor. Kinhibit integrates self-supervised contrastive learning with multi-view molecular graph representation and structure-informed protein language model (ESM-S) to extract features effectively. Kinhibit also employed a feature fusion approach to optimize the fusion of inhibitor and kinase features. Experimental results demonstrate the superiority of this method, achieving an accuracy of 92.6\% in inhibitor prediction tasks of three MAPK signaling pathway kinases: Raf protein kinase (RAF), Mitogen-activated protein kinase kinase (MEK), and Extracellular Signal-Regulated Kinase (ERK). Furthermore, the framework achieves an impressive accuracy of 93.4\% on the MAPK-All dataset. This study provides promising and effective tools for drug screening and biological sciences.
 
 ## Environment
 * Anaconda3
@@ -32,8 +20,8 @@ for drug screening and biological sciences.
 * pycaret		2.3.10
 ## Model Weights
 We extracted features for kinases based on the structure-informed ESM ([ESM-S](https://github.com/DeepGraphLearning/esm-s)). Model weights for ESM-S can be found [here](https://huggingface.co/Oxer11/ESM-S).
-The model weights for Kinhibitor can be found here ().
+The model weights for Kinhibit can be found here ().
 The model weights for ESM-2-650M can be found [here](https://github.com/facebookresearch/esm).
 ## Usage
 ### Prediction(example):
-```python Kinhibitor.py --kinase RAF1 --test_smiles test.txt --outputpath ./Results/```
+```python kinhibit.py --kinase RAF1 --test_smiles test.txt --outputpath ./Results/```
