@@ -20,7 +20,7 @@ The accurate prediction of inhibitor-kinase binding affinity is crucial in drug 
 * pycaret		2.3.10
 ## Model Weights
 We extracted features for kinases based on the structure-informed ESM ([ESM-S](https://github.com/DeepGraphLearning/esm-s)). Model weights for ESM-S can be found [here](https://huggingface.co/Oxer11/ESM-S).
-The model weights for Kinhibit can be found here ().
+The model weights for Kinhibit can be found [here](https://zenodo.org/records/15068720).
 The model weights for ESM-2-650M can be found [here](https://github.com/facebookresearch/esm).
 ## Usage
 ### Prediction(example):
