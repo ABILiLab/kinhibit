@@ -26,6 +26,6 @@ The model weights for ESM-2-650M can be found [here](https://github.com/facebook
 ### Contrastive Learning
 ```python MolGraph_Contrastive Learning.py```
 ### Regression model training
-See Pycaret[https://github.com/pycaret/pycaret].
+See [Pycaret](https://github.com/pycaret/pycaret).
 ### Prediction(example):
 ```python kinhibit.py --kinase RAF1 --test_smiles test.txt --outputpath ./Results/```
