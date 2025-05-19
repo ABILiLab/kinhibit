@@ -24,6 +24,6 @@ The model weights for Kinhibit can be found [here](https://zenodo.org/records/15
 The model weights for ESM-2-650M can be found [here](https://github.com/facebookresearch/esm).
 ## Usage
 ### Contrastive Learning
-```python Molgraph_Contrastive Learning.py```
+```python MolGraph_Contrastive Learning.py```
 ### Prediction(example):
 ```python kinhibit.py --kinase RAF1 --test_smiles test.txt --outputpath ./Results/```
